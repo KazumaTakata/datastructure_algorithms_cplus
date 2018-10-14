@@ -70,45 +70,19 @@ class List
         return -1;
     }
 
-    // void remove(int i)
-    // {
-    //     double *newlist2;
-    //     if (-1 < i && i < length)
-    //     {
-    //         for (int j = 0, j2 = 0; j < length - 1; j++)
-    //         {
-    //             if (j == i)
-    //             {
-    //                 newlist2[j];
-    //                 j2++;
-    //                 length -= 1;
-    //             }
-    //             else
-    //             {
-    //                 newlist2[j] = list[j2];
-    //             }
-
-    //             j2++;
-    //         }
-    //         list = newlist2;
-    //     }
-    //     else
-    //     {
-    //         throw std::invalid_argument("index of list is out of range.");
-    //     }
-    // }
-
     void remove(int i)
     {
         double *newlist = new double[length - 1];
+        bool alreadyremoved = false;
         if (-1 < i && i < length)
         {
-            for (int j = 0, j2 = 0; j < length + 1; j++)
+            for (int j = 0, j2 = 0; j < length; j++)
             {
-                if (j == i)
+                if (j == i && !alreadyremoved)
                 {
-                    j2++;
+                    j--;
                     length -= 1;
+                    alreadyremoved = true;
                 }
                 else
                 {
